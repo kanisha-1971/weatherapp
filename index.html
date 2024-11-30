@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather & Wardrobe Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#e7fbfd] min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-[#004cff] mb-4">Weather & Wardrobe Assistant</h1>
+            <p class="text-gray-600">Plan your day with smart clothing suggestions</p>
+        </header>
+
+        <!-- Search Section -->
+        <div class="max-w-md mx-auto mb-8">
+            <div class="flex gap-2">
+                <input type="text" id="cityInput" placeholder="Enter city name" 
+                    class="flex-1 px-4 py-2 rounded-lg border-2 border-[#004cff] focus:outline-none focus:ring-2 focus:ring-[#004cff]">
+                <button onclick="getWeather()" 
+                    class="bg-[#004cff] text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all">
+                    Search
+                </button>
+            </div>
+            <div class="mt-4">
+                <input type="number" id="durationInput" placeholder="Activity duration (hours)" 
+                    class="w-full px-4 py-2 rounded-lg border-2 border-[#004cff] focus:outline-none focus:ring-2 focus:ring-[#004cff]">
+            </div>
+        </div>
+
+        <!-- Weather Display -->
+        <div id="weatherInfo" class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="weather-gradient rounded-xl p-6 text-white shadow-lg">
+                <div id="currentWeather" class="hidden">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 class="text-2xl font-bold location"></h2>
+                            <p class="text-lg temperature"></p>
+                        </div>
+                        <i class="weather-icon text-5xl"></i>
+                    </div>
+                    <p class="weather-desc text-lg mb-2"></p>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p>Humidity: <span class="humidity"></span></p>
+                            <p>Wind: <span class="wind"></span></p>
+                        </div>
+                        <div>
+                            <p>Feels like: <span class="feels-like"></span></p>
+                            <p>Pressure: <span class="pressure"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="weatherLoading" class="text-center py-8 loading">
+                    <i class="bi bi-cloud-sun text-4xl mb-2"></i>
+                    <p>Loading weather data...</p>
+                </div>
+            </div>
+
+            <!-- Clothing Suggestions Card -->
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+                <h2 class="text-xl font-bold text-[#004cff] mb-4">Clothing Suggestions</h2>
+                <div id="clothingSuggestions" class="space-y-4">
+                    <div id="clothingLoading" class="text-center py-4 loading hidden">
+                        <p>Analyzing weather conditions...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Travel Checklist -->
+        <div class="max-w-4xl mx-auto mt-6">
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+                <h2 class="text-xl font-bold text-[#004cff] mb-4">Travel Checklist</h2>
+                <div id="travelChecklist" class="space-y-2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
